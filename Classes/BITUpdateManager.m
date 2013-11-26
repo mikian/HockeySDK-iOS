@@ -456,6 +456,13 @@ typedef NS_ENUM(NSInteger, BITUpdateAlertViewTag) {
     return;
   }
   
+  if (self.delegate != nil && [self.delegate respondsToSelector:@selector(shouldShowUpdateViewForUpdateManager:)]) {
+    if (![self.delegate shouldShowUpdateViewForUpdateManager:self]) {
+      BITHockeyLog(@"INFO: Delegate aborted update show");
+      return;
+    }
+  }
+  
   if ([self isPreiOS7Environment])
     self.barStyle = UIBarStyleBlack;
   [self showView:[self hockeyViewController:YES]];

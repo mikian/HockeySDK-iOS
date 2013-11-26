@@ -39,6 +39,7 @@
 
 @optional
 
+- (BOOL)shouldShowUpdateViewForUpdateManager:(BITUpdateManager *)updateManager;
 
 ///-----------------------------------------------------------------------------
 /// @name Expiry
